@@ -4,6 +4,7 @@ import ReactGA from 'react-ga';
 import "./App.css";
 import Button from "./components/button";
 import FormContainer from "./components/form-container";
+import LabeledInput from "./components/labeled-input";
 
 const getShortenedLink = async longLink => {
   try {
@@ -35,6 +36,13 @@ const Container = styled.div`
 
 const StyledTextarea = styled.textarea`
   font-family: inherit;
+  font-size: 16px;
+  border: 2px solid #CCCCCC;
+  border-radius: 2px;
+  &:focus {
+    border: 2px solid #1300FF;
+  }
+  padding: 8px 12px;
 `
 
 function App() {
@@ -89,15 +97,13 @@ function App() {
   return (
     <Container>
       <FormContainer>
-        <strong>To</strong>
-        <input onChange={onChange} name="to" type="text" />
+        <LabeledInput label="To" name="to" placeholder="bdeblasio@cityhall.nyc.gov"/>
       </FormContainer>
       <FormContainer>
-        <strong>Subject</strong>
-        <input onChange={onChange} name="subject" type="text" />
+        <LabeledInput label="Subject" name="subject" placeholder="Feedback on proposed 2020 budget"/>
       </FormContainer>
       <FormContainer>
-        <strong>Message</strong>
+        <strong style={{marginBottom: "8px"}}>Message</strong>
         <StyledTextarea rows="20" onChange={onChange} name="message"></StyledTextarea>
       </FormContainer>
       <Button onClick={onSubmit}>Submit</Button>
