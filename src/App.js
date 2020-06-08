@@ -80,6 +80,11 @@ function App() {
     }
   };
 
+  React.useEffect(() => {
+    ReactGA.initialize('UA-110467566-2');
+    ReactGA.pageview("/");
+  })
+
   return (
     <Container>
       <FormContainer>

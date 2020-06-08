@@ -9,6 +9,7 @@
     "node-fetch": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-ga": "^3.0.0",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.1"
   },
