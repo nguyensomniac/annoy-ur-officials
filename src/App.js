@@ -1,6 +1,8 @@
 import React from "react";
+import styled from 'styled-components';
 import "./App.css";
 import Button from "./components/button";
+import FormContainer from "./components/form-container";
 
 const getShortenedLink = async longLink => {
   try {
@@ -23,6 +25,16 @@ const getShortenedLink = async longLink => {
   } catch (e) {}
   return null;
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+`
+
+const StyledTextarea = styled.textarea`
+  font-family: inherit;
+`
 
 function App() {
   const [emailData, setEmailData] = React.useState({
@@ -69,16 +81,22 @@ function App() {
   };
 
   return (
-    <>
-      <span>To</span>
-      <input onChange={onChange} name="to" type="text" />
-      <span>Subject</span>
-      <input onChange={onChange} name="subject" type="text" />
-      <span>Message</span>
-      <textarea onChange={onChange} name="message" type="text"></textarea>
+    <Container>
+      <FormContainer>
+        <strong>To</strong>
+        <input onChange={onChange} name="to" type="text" />
+      </FormContainer>
+      <FormContainer>
+        <strong>Subject</strong>
+        <input onChange={onChange} name="subject" type="text" />
+      </FormContainer>
+      <FormContainer>
+        <strong>Message</strong>
+        <StyledTextarea rows="20" onChange={onChange} name="message"></StyledTextarea>
+      </FormContainer>
       <Button onClick={onSubmit}>Submit</Button>
       {renderShortLink()}
-    </>
+    </Container>
   );
 }
 
