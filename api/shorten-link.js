@@ -11,6 +11,7 @@ export default async (req, res) => {
       body: { link }
     } = req;
     const escapedLink = encodeURIComponent(link);
+    console.log(escapedLink);
     const urlShortenerRequest = await fetch(
       `${URL_SHORTENER_ENDPOINT}?url=${escapedLink}`,
       {
@@ -25,7 +26,7 @@ export default async (req, res) => {
     } else {
       res
         .status(urlShortenerRequest.status)
-        .json({ error: `Error from TinyURL API: ${data.message}` });
+        .json({ error: `Error from TinyURL API: ${data}` });
     }
   } catch (e) {
     res.status(500).json({ error: e.message });

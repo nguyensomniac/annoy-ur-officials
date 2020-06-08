@@ -20,8 +20,7 @@ const getShortenedLink = async longLink => {
       return shortLink;
     } else {
     }
-  } catch (e) {
-  }
+  } catch (e) {}
   return null;
 };
 
@@ -58,7 +57,11 @@ function App() {
 
   const onSubmit = async () => {
     const { to, subject, message } = emailData;
-    const longurl = `mailto:${to}?subject=${subject}&body=${message}`;
+    const longurl = `mailto:${encodeURIComponent(
+      to
+    )}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+      message
+    )}`;
     const sl = await getShortenedLink(longurl);
     if (sl) {
       setShortenedLink(sl);
