@@ -8,6 +8,7 @@ const Container = styled.div`
   border-width: 2px;
   border-style: solid;
   border-color: ${props => (props.isFocused ? "#1300FF" : "#CCCCCC")};
+  transition: border-color 200ms linear;
 `;
 
 const Input = styled.input`
@@ -27,6 +28,7 @@ const Label = styled.div`
   padding: 8px 12px;
   background-color: #f5f5f5;
   color: ${props => (props.isFocused ? "#000" : "#666")};
+  transition: color 200ms linear;
   font-weight: 600;
 `;
 

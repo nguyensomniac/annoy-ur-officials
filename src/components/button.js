@@ -16,7 +16,7 @@ const StyledButton = styled.div`
 const Button = (props) => {
   const { children, ...rest } = props;
   return (
-    <StyledButton role="button" {...rest}>{children}</StyledButton>
+    <StyledButton role="button" tabIndex="0" {...rest}>{children}</StyledButton>
   )
 }
 

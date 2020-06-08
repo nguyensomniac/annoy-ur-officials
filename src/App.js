@@ -4,6 +4,7 @@ import ReactGA from 'react-ga';
 import Button from "./components/button";
 import FormContainer from "./components/form-container";
 import LabeledInput from "./components/labeled-input";
+import LinkDisplay from "./components/link-display";
 
 const getShortenedLink = async longLink => {
   try {
@@ -60,6 +61,7 @@ const StyledTextarea = styled.textarea`
   border: 2px solid #CCCCCC;
   border-radius: 2px;
   padding: 8px 12px;
+  caret-color: #1300ff;
   &:focus {
     border: 2px solid #1300FF;
   }
@@ -68,17 +70,19 @@ const StyledTextarea = styled.textarea`
   }
 `
 
-const Caption = styled.caption`
+const Caption = styled.span`
   font-size: 14px;
   color: #666;
+  text-align: center;
 `
 
 function App() {
-  const [emailData, setEmailData] = React.useState({
+  const defaultFormFields = {
     to: "",
     subject: "",
     message: ""
-  });
+  }
+  const [emailData, setEmailData] = React.useState(defaultFormFields);
 
   const [shortenedLink, setShortenedLink] = React.useState("");
 
@@ -93,16 +97,43 @@ function App() {
     });
   };
 
+  const resetForm = () => {
+    setShortenedLink("");
+    setEmailData(defaultFormFields);
+  }
+
+  const renderForm = () => {
+    if (!shortenedLink) {
+      return (
+        <>
+          <h2>Magic links that open in your email client ✨</h2>
+          <FormContainer>
+            <LabeledInput label="To" name="to" placeholder="bdeblasio@cityhall.nyc.gov"/>
+          </FormContainer>
+          <FormContainer>
+            <LabeledInput label="Subject" name="subject" placeholder="Feedback on proposed 2020 budget"/>
+          </FormContainer>
+          <FormContainer>
+            <StyledTextarea rows="20" onChange={onChange} name="message" placeholder="Type your message here..."></StyledTextarea>
+          </FormContainer>
+          <Button onClick={onSubmit}>Create</Button>
+        </>
+      )
+    }
+  }
+
   const renderShortLink = () => {
     if (shortenedLink) {
       return (
         <>
-          <h3>Your Short Link</h3>
-          <a href={shortenedLink} target="_blank" rel="noopener noreferrer">{shortenedLink}</a>
+          <h2>Your Short Link</h2>
+          <LinkDisplay link={shortenedLink} />
+          <Button onClick={resetForm}>Create another</Button>
         </>
       );
     }
   };
+
 
   const onSubmit = async () => {
     const { to, subject, message } = emailData;
@@ -125,17 +156,7 @@ function App() {
   return (
     <Container>
       <Form>
-        <h2>Magic links that open in your email client ✨</h2>
-        <FormContainer>
-          <LabeledInput label="To" name="to" placeholder="bdeblasio@cityhall.nyc.gov"/>
-        </FormContainer>
-        <FormContainer>
-          <LabeledInput label="Subject" name="subject" placeholder="Feedback on proposed 2020 budget"/>
-        </FormContainer>
-        <FormContainer>
-          <StyledTextarea rows="20" onChange={onChange} name="message" placeholder="Type your message here..."></StyledTextarea>
-        </FormContainer>
-        <Button onClick={onSubmit}>Create</Button>
+        {renderForm()}
         {renderShortLink()}
       </Form>
       <span style={{ width: "100%", margin: "16px 0", display: "inline-flex", flexDirection: "column"}}>
