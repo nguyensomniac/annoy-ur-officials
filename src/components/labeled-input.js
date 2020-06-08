@@ -18,7 +18,7 @@ const Input = styled.input`
   caret-color: #1300ff;
   font-size: 16px;
   &::placeholder {
-    color: #999;
+    color: #666;
   }
 `;
 
