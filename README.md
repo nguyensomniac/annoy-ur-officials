@@ -1,6 +1,6 @@
 # Annoy Ur Officials
 
-## [https://annoyurofficials.online/](View Live site)
+## [View live site](https://annoyurofficials.online/)
 
 A tiny tool for disobedience. Converts an email template into a **magic link** that will automatically open in a user's email client.
 
@@ -8,7 +8,7 @@ A tiny tool for disobedience. Converts an email template into a **magic link** t
 
 ## Development
 
-This app was scaffolded using Create React App and uses [https://vercel.com/docs/v2/serverless-functions/introduction](Vercel serverless functions) in lieu of a backend. Development relies on the Vercel CLI, install it as a global:
+This app was scaffolded using Create React App and uses [Vercel serverless functions](https://vercel.com/docs/v2/serverless-functions/introduction) in lieu of a backend. Development relies on the Vercel CLI, install it as a global:
 
 ```
 yarn global add vercel
