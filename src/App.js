@@ -27,10 +27,18 @@ const getShortenedLink = async longLink => {
   return null;
 };
 
+const getCurrentYear = () => {
+  return new Date().getFullYear();
+}
+
 const Container = styled.div`
-  background: #F5F5F5;
+  background: #FFF;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  @media (min-width: 1024px) {
+    background: #F5F5F5;
+  }
 `
 
 const Form = styled.div`
@@ -58,6 +66,11 @@ const StyledTextarea = styled.textarea`
   &::placeholder {
     color: #666;
   }
+`
+
+const Caption = styled.caption`
+  font-size: 14px;
+  color: #666;
 `
 
 function App() {
@@ -125,6 +138,14 @@ function App() {
         <Button onClick={onSubmit}>Create</Button>
         {renderShortLink()}
       </Form>
+      <span style={{ width: "100%", margin: "16px 0", display: "inline-flex", flexDirection: "column"}}>
+        <Caption>
+          &copy; {getCurrentYear()}. Feedback? Tweet <a href="https://twitter.com/lily___digital">@lily___digital</a>.
+        </Caption>
+        <Caption>
+          #BLM forever and always
+        </Caption>
+      </span>
     </Container>
   );
 }
