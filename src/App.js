@@ -108,10 +108,10 @@ function App() {
         <>
           <h2>Magic links that open in your email client ✨</h2>
           <FormContainer>
-            <LabeledInput label="To" name="to" placeholder="bdeblasio@cityhall.nyc.gov"/>
+            <LabeledInput onChange={onChange} label="To" name="to" placeholder="bdeblasio@cityhall.nyc.gov"/>
           </FormContainer>
           <FormContainer>
-            <LabeledInput label="Subject" name="subject" placeholder="Feedback on proposed 2020 budget"/>
+            <LabeledInput onChange={onChange} label="Subject" name="subject" placeholder="Feedback on proposed 2020 budget"/>
           </FormContainer>
           <FormContainer>
             <StyledTextarea rows="20" onChange={onChange} name="message" placeholder="Type your message here..."></StyledTextarea>
