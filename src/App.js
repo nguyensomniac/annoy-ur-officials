@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 import "./App.css";
 import Button from "./components/button";
 import FormContainer from "./components/form-container";
@@ -61,7 +62,7 @@ function App() {
       return (
         <>
           <h3>Your Short Link</h3>
-          {shortenedLink}
+          <a href={shortenedLink} target="_blank" rel="noopener noreferrer">{shortenedLink}</a>
         </>
       );
     }
